@@ -1,16 +1,15 @@
 {
   "files": {
-    "main.css": "/marblerace/static/css/main.e4e3b449.css",
-    "main.js": "/marblerace/static/js/main.be80088d.js",
-    "static/js/453.d57d5f68.chunk.js": "/marblerace/static/js/453.d57d5f68.chunk.js",
-    "static/media/PixelifySans-Regular.ttf": "/marblerace/static/media/PixelifySans-Regular.78dfe66b4f31904f6ee9.ttf",
-    "index.html": "/marblerace/index.html",
-    "main.e4e3b449.css.map": "/marblerace/static/css/main.e4e3b449.css.map",
-    "main.be80088d.js.map": "/marblerace/static/js/main.be80088d.js.map",
-    "453.d57d5f68.chunk.js.map": "/marblerace/static/js/453.d57d5f68.chunk.js.map"
+    "main.css": "/static/css/main.022795d2.css",
+    "main.js": "/static/js/main.c7c6dc8a.js",
+    "static/js/453.d57d5f68.chunk.js": "/static/js/453.d57d5f68.chunk.js",
+    "index.html": "/index.html",
+    "main.022795d2.css.map": "/static/css/main.022795d2.css.map",
+    "main.c7c6dc8a.js.map": "/static/js/main.c7c6dc8a.js.map",
+    "453.d57d5f68.chunk.js.map": "/static/js/453.d57d5f68.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e4e3b449.css",
-    "static/js/main.be80088d.js"
+    "static/css/main.022795d2.css",
+    "static/js/main.c7c6dc8a.js"
   ]
 }
