@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/marblerace/static/css/main.022795d2.css",
-    "main.js": "/marblerace/static/js/main.1bbfecfd.js",
+    "main.js": "/marblerace/static/js/main.47c0fbc7.js",
     "static/js/453.d57d5f68.chunk.js": "/marblerace/static/js/453.d57d5f68.chunk.js",
     "index.html": "/marblerace/index.html",
     "main.022795d2.css.map": "/marblerace/static/css/main.022795d2.css.map",
-    "main.1bbfecfd.js.map": "/marblerace/static/js/main.1bbfecfd.js.map",
+    "main.47c0fbc7.js.map": "/marblerace/static/js/main.47c0fbc7.js.map",
     "453.d57d5f68.chunk.js.map": "/marblerace/static/js/453.d57d5f68.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.022795d2.css",
-    "static/js/main.1bbfecfd.js"
+    "static/js/main.47c0fbc7.js"
   ]
 }
