@@ -1,61 +1,74 @@
-/* General Styles */
+/* 🌎 General Styles */
 body {
-  font-family: "Arial", sans-serif;
-  background-color: #1e1e2e; /* Dark, sleek background */
-  color: #e0e0e0; /* Soft white text for readability */
+  font-family: Arial, sans-serif; /* Default font */
+  background: linear-gradient(to bottom, #232526, #414345); /* Stylish gradient */
+  color: #ffffff; /* White text for high contrast */
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center; /* Ensures all text is centered */
   min-height: 100vh;
   margin: 0;
+  padding: 20px;
 }
 
-/* App Container */
+/* 🎭 App Container */
 .App {
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  max-width: 800px;
+  margin: auto;
 }
 
-/* Status Text */
+/* 🏆 Status Text */
 .status-text {
   font-size: 1.8rem;
   font-weight: bold;
-  color: #ffdd57; /* Vibrant yellow for emphasis */
+  color: #ffdd57; /* Vibrant yellow */
   margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 8px;
+  background: rgba(255, 221, 87, 0.2); /* Subtle yellow tint */
 }
 
-/* Animated Component */
+/* 🎬 Animated Component */
 .rive-container {
   width: 600px;
   height: 600px;
+  display: block;
+  margin: 0 auto; /* Centers the component */
 }
 
-/* Data Table */
+/* 📊 Data Table */
 .data-table {
   border-collapse: collapse;
-  width: 60%;
+  width: 80%;
   margin: 20px auto;
-  background-color: #2a2a3a; /* Dark navy */
-  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.6); /* Semi-transparent dark background */
+  border-radius: 10px;
   overflow: hidden;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Soft shadow */
 }
 
 .data-table th {
-  background-color: #3b3b4f; /* Slightly lighter navy */
-  color: #ffdd57; /* Vibrant yellow for contrast */
-  padding: 12px;
+  background-color: #444851; /* Dark gray for header */
+  color: #ffdd57; /* Yellow for contrast */
+  padding: 15px;
+  font-size: 1.2rem;
 }
 
 .data-table td {
-  padding: 10px;
+  padding: 12px;
   text-align: center;
-  border: 1px solid #4b4b5f; /* Soft border color */
+  font-size: 1.1rem;
+  border: 1px solid #555; /* Softer border */
 }
 
-/* Boolean Highlighting */
+/* ✅ Boolean Highlights */
 .green {
   color: #00c853; /* Bright green */
   font-weight: bold;
@@ -66,39 +79,52 @@ body {
   font-weight: bold;
 }
 
-/* Button Styling */
+/* 🔘 Button Styling */
 .shuffle-button {
-  background-color: #ffdd57; /* Vibrant yellow */
+  background-color: #ffdd57;
   border: none;
-  padding: 12px 20px;
-  font-size: 1rem;
+  padding: 14px 24px;
+  font-size: 1.1rem;
   font-weight: bold;
   cursor: pointer;
   margin-top: 20px;
   border-radius: 8px;
-  transition: background-color 0.3s ease-in-out;
+  transition: all 0.3s ease;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.3);
+  display: block;
+  margin: 20px auto; /* Centers the button */
 }
 
 .shuffle-button:hover {
-  background-color: #e0b347; /* Slightly darker yellow */
+  background-color: #e0b347; /* Darker shade */
+  transform: scale(1.05);
 }
 
-/* Blurb Styling */
+/* 📜 Blurb Styling */
 .blurb {
   font-size: 1.2rem;
   margin-top: 30px;
   color: #ffdd57;
   font-style: italic;
+  text-align: center;
+  padding: 15px;
+  border-radius: 8px;
+  background: rgba(255, 221, 87, 0.2); /* Subtle yellow tint */
+  max-width: 700px;
 }
 
+/* 🔳 Section Break */
 .section-break {
   width: 80%;
-  border: 1px solid #4b4b5f;
-  margin: 20px auto;
+  border: 1px solid #777;
+  margin: 30px auto;
 }
 
+/* 📢 Headings */
 h2 {
   text-align: center;
   font-weight: bold;
-  color: #ffdd57; /* Vibrant yellow */
+  color: #ffdd57;
+  font-size: 1.6rem;
+  padding-bottom: 10px;
 }

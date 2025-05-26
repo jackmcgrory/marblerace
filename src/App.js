@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import confetti from "canvas-confetti"; // Import confetti
 import { useRive, useViewModelInstanceBoolean, useViewModelInstanceEnum, useViewModelInstanceNumber, useViewModelInstanceTrigger } from "@rive-app/react-webgl2";
+import "./App.css"; // Adjust the path if necessary
 
 export default function App() {
   const { rive, RiveComponent } = useRive({
@@ -86,16 +87,17 @@ export default function App() {
 
       <hr className="section-break" />
 
-      <p className="blurb">
-        This box shuffling game was made entirely in Rive, the component with the grey background includes all of the assets and 
-        all of the logic to randomly assign values to the boxes and to randomly pick from a set of 3 different shuffles. The values in the 
-        table above are those that are exposed via the viewmodel of the animation. These can be accessed externally to the rive animation
-        meaning in the code you can know the state of the animation to change text or to trigger specific events. You can add listeners to any values
-        such as triggering confetti if you win, or you can even access the triggers and trigger them if the user hits an external button.
-
-        Inside the animation there is also an embedded onclick listener on the shuffle button that doesn't require any code to work,
-        this also works on iOS or Android.
-      </p>
+     <p className="blurb">
+  This box-shuffling game was made entirely in Rive.<br /><br />
+  
+  The component with the grey background includes all of the assets and logic needed to randomly assign values to the boxes and select from a set of three different shuffles.<br /><br />
+  
+  The values in the table above are those exposed via the view model of the animation. These values can be accessed externally, meaning the code can determine the animation's state to change text or trigger specific events.<br /><br />
+  
+  You can add listeners to any values—for example, triggering confetti if you win—or even access the triggers to activate them when the user clicks an external button.<br /><br />
+  
+  Inside the animation, there is also an <b>embedded onclick listener</b> on the shuffle button. This listener works <b>without requiring additional code</b>, making it seamlessly functional across web, iOS, and Android.<br /><br />
+</p>
     </div>
   );
 }
