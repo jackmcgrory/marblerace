@@ -1,6 +1,7 @@
 {
   "name": "marblerace",
   "version": "0.1.0",
+  "homepage" : "https://jackmcgrory.github.io/marblerace/",
   "private": true,
   "dependencies": {
     "@rive-app/react-webgl2": "^4.20.2",
