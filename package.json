@@ -24,7 +24,6 @@
     "deploy": "gh-pages -d build",
     "eject": "react-scripts eject",
     "lint:fix": "eslint . --fix"
-
   },
   "eslintConfig": {
     "extends": [
@@ -48,6 +47,7 @@
     "@eslint/js": "^9.28.0",
     "eslint": "^8.57.1",
     "eslint-plugin-react": "^7.37.5",
-    "globals": "^16.2.0"
+    "globals": "^16.2.0",
+    "http-server": "^14.1.1"
   }
 }
