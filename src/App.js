@@ -3,6 +3,11 @@ import { useRive, useViewModel } from "@rive-app/react-webgl2";
 import "./App.css";
 import UnsupportedRow from "./RiveRows/UnsupportedRow";
 import NumberRow from "./RiveRows/NumberRow";
+import BooleanRow from "./RiveRows/BooleanRow";
+import ColourRow from "./RiveRows/ColourRow";
+import EnumRow from "./RiveRows/EnumRow";
+import StringRow from "./RiveRows/StringRow";
+import TriggerRow from "./RiveRows/TriggerRow";
 
 export default function App() {
   const [riveSrc, setRiveSrc] = useState(null);
@@ -10,6 +15,7 @@ export default function App() {
 
   const { rive, RiveComponent } = useRive({
     src: riveSrc,
+    stateMachines: "State Machine 1",
     autoplay: true,
     autoBind: true,
   });
@@ -45,13 +51,26 @@ export default function App() {
             <tr>
               <th>Property Name</th>
               <th>Type</th>
+              <th>Current Value</th>
+              <th>Change Value</th>
             </tr>
           </thead>
           <tbody>
             {viewModelStruct.properties.map((item, index) => {
               if (item.type === "number") {
                 return <NumberRow key={index} viewModelInstance={viewModelInstance} name={item.name} />;
-              } else {
+              } else if (item.type === "string") {
+                return <StringRow key={index} viewModelInstance={viewModelInstance} name={item.name} />;
+              } else if (item.type === "enumType") {
+                return <EnumRow key={index} viewModelInstance={viewModelInstance} name={item.name} />;
+              } else if (item.type === "color") {
+                return <ColourRow key={index} viewModelInstance={viewModelInstance} name={item.name} />;
+              } else if (item.type === "trigger") {
+                return <TriggerRow key={index} viewModelInstance={viewModelInstance} name={item.name} />;
+              } else if (item.type === "boolean") {
+                return <BooleanRow key={index} viewModelInstance={viewModelInstance} name={item.name} />;
+              }
+              else {
                 return <UnsupportedRow key={index} name={item.name} type={item.type} />;
               }
             })}

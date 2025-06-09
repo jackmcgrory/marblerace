@@ -1,35 +1,26 @@
 import React, { useState } from "react";
-import { useViewModelInstanceNumber } from "@rive-app/react-webgl2";
+import { useViewModelInstanceColor } from "@rive-app/react-webgl2";
 
 export default function ColourRow({ viewModelInstance, name }) {
-    const { value: numberToDisplay, setValue: setNumberValue } = useViewModelInstanceNumber(name, viewModelInstance);
-    const [inputValue, setInputValue] = useState(numberToDisplay ? numberToDisplay : 0); // Track user input
+    const { value: colour, setRgba: setColour } = useViewModelInstanceColor(name, viewModelInstance);
 
     const handleChange = (event) => {
-        setInputValue(event.target.value); // Update state as user types
-    };
-
-    const handleKeyPress = (event) => {
-        if (event.key === "Enter") {
-            const userNumber = parseFloat(inputValue); // Convert input to number
-            if (!isNaN(userNumber)) {
-                setNumberValue(userNumber); // Update view model
-            }
-        }
+        setInputValue(event.target.value);
+        const r = parseInt(hexColor.substring(1,3), 16);
+        const g = parseInt(hexColor.substring(3,5), 16);
+        const b = parseInt(hexColor.substring(5,7), 16);
+        setColour(r,g,b,255);
     };
 
     return (
         <tr>
             <td>{name}</td>
             <td>Colour</td>
-            <td>{numberToDisplay}</td>
+            <td style={{backgroundColor: `#${colour.toString(16)}`}}></td>
             <td>
                 <input
-                    type="number"
-                    value={inputValue}
+                    type="color"
                     onChange={handleChange}
-                    onKeyPress={handleKeyPress}
-                    className="number-input"
                 />
             </td>
         </tr>

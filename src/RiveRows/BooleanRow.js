@@ -9,7 +9,7 @@ export default function BooleanRow({ viewModelInstance, name }) {
     };
 
     return (
-        <tr key={key}>
+        <tr>
             <td>{name}</td>
             <td>Boolean</td>
             <td className={isActive ? "green" : "red"}>{isActive ? "True" : "False"}</td>
