@@ -1,103 +1,65 @@
-import { useEffect } from "react";
-import confetti from "canvas-confetti"; // Import confetti
-import { useRive, useViewModelInstanceBoolean, useViewModelInstanceEnum, useViewModelInstanceNumber, useViewModelInstanceTrigger } from "@rive-app/react-webgl2";
-import "./App.css"; // Adjust the path if necessary
+import { useState } from "react";
+import { useRive, useViewModel } from "@rive-app/react-webgl2";
+import "./App.css";
+import UnsupportedRow from "./RiveRows/UnsupportedRow";
+import NumberRow from "./RiveRows/NumberRow";
 
 export default function App() {
+  const [riveSrc, setRiveSrc] = useState(null);
+  const [key, setKey] = useState(0);
+
   const { rive, RiveComponent } = useRive({
-    src: "/shufflingboxes.riv",
-    artboard: "TV - 1",
-    stateMachines: "State Machine 1",
+    src: riveSrc,
     autoplay: true,
-    autoBind: true, // Auto-binding enabled
+    autoBind: true,
   });
 
   const viewModelInstance = rive?.viewModelInstance;
+  const viewModelStruct = useViewModel(rive);
 
-  // Bind properties
-  const { value: readyToOpen } = useViewModelInstanceBoolean("readyToOpen", viewModelInstance);
-  const { value: winningBox } = useViewModelInstanceNumber("winningBox", viewModelInstance);
-  const { value: shuffleNumber } = useViewModelInstanceNumber("shuffleNumber", viewModelInstance);
-  const { value: winner } = useViewModelInstanceBoolean("winner", viewModelInstance);
-  const { value: gameFinished } = useViewModelInstanceBoolean("gameFinished", viewModelInstance);
-  const { trigger: shuffleBoxes } = useViewModelInstanceTrigger("shuffleBoxes", viewModelInstance);
-  const { value: currentSetUpEnum } = useViewModelInstanceEnum("GameSetup", viewModelInstance);
-
-  // 🎉 Trigger confetti when winner is true
-  useEffect(() => {
-    if (winner) {
-      confetti({
-        particleCount: 150,
-        spread: 80,
-        origin: { y: 0.6 }, 
-      });
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setRiveSrc(URL.createObjectURL(file));
+      setKey((prevKey) => prevKey + 1); // Increment key to force re-render
     }
-  }, [winner]); 
+  };
 
   return (
     <div className="App">
-      <h1>Game State</h1>
+      <h1>Rive Animation Playground</h1>
 
-      <h2 className="status-text">
-        {gameFinished ? "Game Over - Refresh the page to play again" : 
-        readyToOpen ? "Boxes shuffled - pick your winner!":
-        "Boxes assigned - time to shuffle!"}
-      </h2>
+      <input type="file" accept=".riv" onChange={handleFileUpload} />
 
-      <RiveComponent style={{ width: "600px", height: "600px" }} />
+      {riveSrc && (
+        <RiveComponent key={key} style={{ width: "600px", height: "600px" }} />
+      )}
 
       <hr className="section-break" />
 
       <h2>View Model Properties</h2>
 
-      <table className="data-table">
-        <thead>
-          <tr>
-            <th>Property</th>
-            <th>Value</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Ready to Open</td>
-            <td className={readyToOpen ? "green" : "red"}>{readyToOpen ? "Yes" : "No"}</td>
-          </tr>
-          <tr>
-            <td>Winning Box</td>
-            <td>{winningBox}</td>
-          </tr>
-          <tr>
-            <td>Shuffle Number</td>
-            <td>{shuffleNumber}</td>
-          </tr>
-          <tr>
-            <td>Winner</td>
-            <td className={winner ? "green" : "red"}>{winner ? "Yes" : "No"}</td>
-          </tr>
-          <tr>
-            <td>Game Set Up Enum</td>
-            <td>{currentSetUpEnum}</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <button className="shuffle-button" onClick={shuffleBoxes}>
-        Shuffle Boxes
-      </button>
-
-      <hr className="section-break" />
-
-     <p className="blurb">
-  This box-shuffling game was made entirely in Rive.<br /><br />
-  
-  The component with the grey background includes all of the assets and logic needed to randomly assign values to the boxes and select from a set of three different shuffles.<br /><br />
-  
-  The values in the table above are those exposed via the view model of the animation. These values can be accessed externally, meaning the code can determine the animation's state to change text or trigger specific events.<br /><br />
-  
-  You can add listeners to any values—for example, triggering confetti if you win—or even access the triggers to activate them when the user clicks an external button.<br /><br />
-  
-  Inside the animation, there is also an <b>embedded onclick listener</b> on the shuffle button. This listener works <b>without requiring additional code</b>, making it seamlessly functional across web, iOS, and Android.<br /><br />
-</p>
+      {viewModelStruct?.properties?.length ? (
+        <table className="data-table">
+          <thead>
+            <tr>
+              <th>Property Name</th>
+              <th>Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            {viewModelStruct.properties.map((item, index) => {
+              if (item.type === "number") {
+                return <NumberRow key={index} viewModelInstance={viewModelInstance} name={item.name} />;
+              } else {
+                return <UnsupportedRow key={index} name={item.name} type={item.type} />;
+              }
+            })}
+          </tbody>
+        </table>
+      ) : (
+        <h2 className="status-text">No view model found</h2>
+      )}
     </div>
   );
 }
