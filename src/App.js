@@ -31,12 +31,17 @@ export default function App() {
     }
   };
 
+  const useDefaultFile = () => {
+    // setRiveSrc('/rivefullviewmodeltest.riv');
+  }
+
   return (
     <div className="App">
       <h1>Rive Animation Playground</h1>
 
       <input type="file" accept=".riv" onChange={handleFileUpload} />
 
+      <button onClick={useDefaultFile}>Use Sample File</button>
       {riveSrc && (
         <RiveComponent key={key} style={{ width: "600px", height: "600px" }} />
       )}
