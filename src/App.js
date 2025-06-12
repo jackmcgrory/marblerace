@@ -32,7 +32,7 @@ export default function App() {
   };
 
   const useDefaultFile = () => {
-    // setRiveSrc('/rivefullviewmodeltest.riv');
+    setRiveSrc('/marblerace/rivefullviewmodeltest.riv');
   }
 
   return (
@@ -84,6 +84,8 @@ export default function App() {
       ) : (
         <h2 className="status-text">No view model found</h2>
       )}
+
+  <h3 className="status-text">Note if the animation will not play - please ensure it's default state machine is called 'State Machine 1'</h3>
     </div>
   );
 }
