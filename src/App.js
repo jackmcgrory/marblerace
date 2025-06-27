@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useRive, useViewModel } from "@rive-app/react-webgl2";
+import * as htmlToImage from "html-to-image";
 import "./App.css";
 import UnsupportedRow from "./RiveRows/UnsupportedRow";
 import NumberRow from "./RiveRows/NumberRow";
@@ -12,6 +13,8 @@ import TriggerRow from "./RiveRows/TriggerRow";
 export default function App() {
   const [riveSrc, setRiveSrc] = useState(null);
   const [key, setKey] = useState(0);
+
+  const screenshotRef = useRef(null);
 
   const { rive, RiveComponent } = useRive({
     src: riveSrc,
@@ -35,6 +38,34 @@ export default function App() {
     setRiveSrc('/marblerace/rivefullviewmodeltest.riv');
   }
 
+  const handleShare = async () => {
+    // exit if null
+    if (!screenshotRef.current) return;
+    try {
+      const dataURL = await htmlToImage.toJpeg(screenshotRef.current);
+
+      // convert to blob
+      const response = await fetch(dataURL);
+      const blob = await response.blob();
+      const file = new File([blob], 'rive-exemplar.jpg', {type: 'image/jpeg'});
+
+
+      // share the file
+      if (navigator.canShare && navigator.canShare({ files: [file]})) {
+        await navigator.share({
+          files : [file],
+          title : "Check out this animation screenshot!",
+          text : "This has been captured by a react app and shared to my socials #wow",
+        });
+      }else {
+        alert('Sharing is not supported on this browser or device');
+      }
+
+    } catch (err) {
+      console.error("Screenshot failed", err);
+    }
+  }
+
   return (
     <div className="App">
       <h1>Rive Animation Playground</h1>
@@ -42,8 +73,11 @@ export default function App() {
       <input type="file" accept=".riv" onChange={handleFileUpload} />
 
       <button onClick={useDefaultFile}>Use Sample File</button>
+      <button onClick={handleShare}>Share to Social Media</button>
       {riveSrc && (
-        <RiveComponent key={key} style={{ width: "600px", height: "600px" }} />
+        <div ref={screenshotRef} style={{ width: "600px", height: "600px" }}>
+        <RiveComponent key={key} style={{ width: "100%", height: "100%" }} />
+        </div>
       )}
 
       <hr className="section-break" />
