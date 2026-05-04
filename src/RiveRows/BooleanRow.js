@@ -1,5 +1,5 @@
 import React from "react";
-import { useViewModelInstanceBoolean } from "@rive-app/react-webgl2";
+import { useViewModelInstanceBoolean } from "rive-react";
 
 export default function BooleanRow({ viewModelInstance, name }) {
     const { value: isActive, setValue: setIsActive } = useViewModelInstanceBoolean(name, viewModelInstance);

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useViewModelInstanceColor } from "@rive-app/react-webgl2";
+import { useViewModelInstanceColor } from "rive-react";
 
 export default function ColourRow({ viewModelInstance, name }) {
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useViewModelInstanceNumber } from "@rive-app/react-webgl2";
+import { useViewModelInstanceNumber } from "rive-react";
 
 export default function NumberRow({ viewModelInstance, name }) {
     const { value: numberToDisplay, setValue: setNumberValue } = useViewModelInstanceNumber(name, viewModelInstance);

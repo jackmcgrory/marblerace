@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useViewModelInstanceEnum } from "@rive-app/react-webgl2";
+import { useViewModelInstanceEnum } from "rive-react";
 
 export default function EnumRow({ viewModelInstance, name }) {
     const { value: enumToDisplay, setValue: setEnumValue, values: enumOptions } = useViewModelInstanceEnum(name, viewModelInstance);

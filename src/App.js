@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { useRive, useViewModel } from "@rive-app/react-webgl2";
+import { useRive, useViewModel } from "rive-react";
 import * as htmlToImage from "html-to-image";
 import "./App.css";
 import UnsupportedRow from "./RiveRows/UnsupportedRow";

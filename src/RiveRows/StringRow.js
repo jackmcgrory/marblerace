@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useViewModelInstanceString } from "@rive-app/react-webgl2";
+import { useViewModelInstanceString } from "rive-react";
 
 export default function StringRow({ viewModelInstance, name }) {
     const { value: stringToDisplay, setValue: setStringValue } = useViewModelInstanceString(name, viewModelInstance);

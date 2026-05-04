@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import confetti from "canvas-confetti";
-import { useViewModelInstanceTrigger } from "@rive-app/react-webgl2";
+import { useViewModelInstanceTrigger } from "rive-react";
 
 export default function TriggerRow({ viewModelInstance, name }) {
     const [confettiActive, setConfettiActive] = useState(false);
